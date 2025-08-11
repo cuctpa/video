@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Лето-2025</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet>
     <style>
-         :root {
+        :root {
             --primary-color: #ff6b6b;
             --secondary-color: #4e54c8;
             --text-color: #333;
@@ -148,6 +148,41 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
         }
+
+        .messages-container {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feedback-item {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .feedback-item h4 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .feedback-item small {
+            color: #888;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .feedback-item p {
+            margin: 0;
+            line-height: 1.5;
+        }
         
         @media (max-width: 768px) {
             h1 {
@@ -163,6 +198,9 @@
                 max-width: 300px;
                 text-align: center;
             }
+            .feedback-section {
+                padding: 25px;
+            }
         }
     </style>
 </head>
@@ -170,7 +208,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>Лепо-2025</h1>
+            <h1>Лето-2025</h1>
             <p class="subtitle">Яркие моменты нашего лета</p>
 
             <div class="nav-buttons">
@@ -181,15 +219,78 @@
 
         <section class="feedback-section">
             <h2>Оставь отзыв</h2>
-            <form class="feedback-form">
-                <input type="text" class="feedback-input" placeholder="Ваше имя">
-                <input type="text" class="feedback-input" placeholder="НЕ ИЗМЕНЯТЬ НИ КАК 'ДОЛБАЕБ'">
-                <textarea class="feedback-input" placeholder="Ваш отзыв..." rows="4"></textarea>
+            <form id="feedbackForm" class="feedback-form">
+                <input type="text" class="feedback-input" placeholder="Ваше имя" required>
+                <input type="text" class="feedback-input" placeholder="Тип отзыва" value="ДОЛБАЕБ" readonly>
+                <textarea class="feedback-input" placeholder="Ваш отзыв..." rows="4" required></textarea>
                 <button type="submit" class="submit-btn">Отправить</button>
             </form>
         </section>
+
+        <div class="messages-container" id="messagesContainer"></div>
     </div>
+
+    <script>
+        // Конфигурация (ЗАМЕНИТЕ НА СВОИ ДАННЫЕ)
+        const GITHUB_USERNAME = 'cuctpa';
+        const REPO_NAME = 'feedback-db'; // Репозиторий для хранения отзывов
+        const ACCESS_TOKEN = 'ВАШ_ТОКЕН_GITHUB'; // Создайте в Settings > Developer settings
+
+        // Загрузка отзывов при открытии страницы
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadFeedback();
+        });
+
+        // Отправка формы
+        document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const name = formData.get(0);
+            const type = formData.get(1);
+            const text = formData.get(2);
+
+            try {
+                // Создаем новый Issue на GitHub
+                await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/issues`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `token ${ACCESS_TOKEN}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        title: `Отзыв от ${name}`,
+                        body: `**Тип:** ${type}\n\n${text}`
+                    })
+                });
+
+                e.target.reset();
+                await loadFeedback(); // Обновляем список
+                alert('Отзыв отправлен!');
+            } catch (error) {
+                console.error('Ошибка:', error);
+                alert('Ошибка при отправке отзыва');
+            }
+        });
+
+        // Загрузка отзывов с GitHub
+        async function loadFeedback() {
+            try {
+                const response = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/issues`);
+                const issues = await response.json();
+                
+                const container = document.getElementById('messagesContainer');
+                container.innerHTML = issues.map(issue => `
+                    <div class="feedback-item">
+                        <h4>${issue.title.replace('Отзыв от ', '')}</h4>
+                        <small>${issue.body.split('**Тип:** ')[1]?.split('\n')[0] || 'Без категории'}</small>
+                        <p>${issue.body.split('\n\n')[1] || issue.body}</p>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Ошибка загрузки:', error);
+            }
+        }
+    </script>
 </body>
-
-
 </html>
