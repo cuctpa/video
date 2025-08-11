@@ -3,178 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лего-2025 | Яркие моменты лета</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Лего-2025</title>
     <style>
         :root {
             --primary: #FF6B6B;
-            --secondary: #4ECDC4;
             --dark: #292F36;
             --light: #F7FFF7;
-            --accent: #FFE66D;
         }
         
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             background-color: var(--light);
             color: var(--dark);
-            line-height: 1.6;
+            line-height: 1.5;
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 600px;
             margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 3rem 0;
-            background: white;
-            color: var(--dark);
-            border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
         }
         
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin: 0;
             color: var(--primary);
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
         }
         
         .subtitle {
-            font-size: 1.3rem;
-            opacity: 0.8;
-            margin-top: 1rem;
-        }
-        
-        /* Стили галереи из второй картинки */
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-        
-        .photo-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #666;
         }
         
-        .photo-item img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 1rem;
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0;
         }
         
-        .photo-title {
+        .btn {
+            padding: 15px;
+            border-radius: 10px;
+            background: white;
+            border: 2px solid #ddd;
+            font-size: 1.1rem;
             font-weight: 600;
-            font-size: 1.2rem;
-            color: var(--dark);
-        }
-        
-        /* Форма отзывов (как в первой картинке) */
-        .feedback-section {
-            background: white;
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
-            margin: 4rem auto;
-            max-width: 700px;
-        }
-        
-        .feedback-section h2 {
             text-align: center;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.2s;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05);
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+            background-color: #f0f0f0;
+        }
+        
+        h2 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 40px 0 20px;
             color: var(--primary);
-            margin-bottom: 2rem;
         }
         
         .feedback-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
         
-        .form-row {
-            display: flex;
-            gap: 1rem;
+        .form-group {
+            margin-bottom: 20px;
         }
         
-        .form-input {
-            padding: 1rem;
-            border: 2px solid #eee;
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
             border-radius: 8px;
-            flex: 1;
-            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        
+        .readonly {
+            background-color: #f5f5f5;
+            color: #777;
         }
         
         .submit-btn {
-            background: var(--primary);
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary);
             color: white;
             border: none;
-            padding: 1rem 2rem;
             border-radius: 8px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 1rem;
-            transition: all 0.3s;
+            transition: background-color 0.2s;
         }
         
-        .submit-btn:hover {
-            background: #ff5252;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
+        .submit-btn:active {
+            background-color: #e05555;
         }
         
-        @media (max-width: 768px) {
-            .photo-gallery {
-                grid-template-columns: 1fr;
+        @media (min-width: 768px) {
+            .buttons {
+                flex-direction: row;
+                justify-content: center;
             }
             
-            .form-row {
-                flex-direction: column;
+            .btn {
+                min-width: 200px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Лего-2025</h1>
-            <p class="subtitle">Яркие моменты нашего лета</p>
-        </header>
+        <h1>Лего-2025</h1>
+        <p class="subtitle">Яркие моменты нашего лета</p>
         
-        <!-- Галерея в стиле второй картинки -->
-        <div class="photo-gallery">
-            <div class="photo-item">
-                <img src="https://source.unsplash.com/random/600x400/?lego,summer,1" alt="Лето с Лего">
-                <div class="photo-title">Наши целые</div>
-            </div>
-            <div class="photo-item">
-                <img src="https://source.unsplash.com/random/600x400/?lego,fun,2" alt="Веселье">
-                <div class="photo-title">Наши фото</div>
-            </div>
+        <div class="buttons">
+            <a href="#" class="btn">Наши видео</a>
+            <a href="#" class="btn">Наши фото</a>
         </div>
         
-        <!-- Форма отзывов из первой картинки -->
-        <section class="feedback-section">
-            <h2>Оставь отзыв</h2>
-            <form class="feedback-form">
-                <div class="form-row">
-                    <input type="text" class="form-input" placeholder="Вице или" readonly>
-                    <input type="text" class="form-input" placeholder="ДОЛБАЕВ" readonly>
-                    <input type="text" class="form-input" placeholder="Не отзыв..." readonly>
+        <h2>Оставь отзыв</h2>
+        
+        <div class="feedback-form">
+            <form>
+                <div class="form-group">
+                    <label>Ваше имя</label>
+                    <input type="text" class="form-control" placeholder="Введите ваше имя">
                 </div>
-                <button type="submit" class="submit-btn">Отправить</button>
+                
+                <div class="form-group">
+                    <label>НЕ ИЗМЕНИТЬ НИ КАК ДОЛБАЕВ?</label>
+                    <input type="text" class="form-control readonly" value="ДОЛБАЕВ" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label>Ваш отзыв...</label>
+                    <textarea class="form-control" rows="4" placeholder="Напишите ваш отзыв"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">О ПРАВИТЬ</button>
             </form>
-        </section>
+        </div>
     </div>
+    
+    <script>
+        // Добавляем анимацию нажатия для всех кнопок
+        document.querySelectorAll('.btn, .submit-btn').forEach(btn => {
+            btn.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+                if(this.classList.contains('btn')) {
+                    this.style.backgroundColor = '#f0f0f0';
+                }
+            });
+            
+            btn.addEventListener('touchend', function() {
+                this.style.transform = '';
+                if(this.classList.contains('btn')) {
+                    this.style.backgroundColor = 'white';
+                }
+            });
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лего-2025</title>
+    <style>
+        :root {
+            --primary: #FF6B6B;
+            --dark: #292F36;
+            --light: #F7FFF7;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.5;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .btn {
+            padding: 15px;
+            border-radius: 10px;
+            background: white;
+            border: 2px solid #ddd;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.2s;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05);
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+            background-color: #f0f0f0;
+        }
+        
+        h2 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 40px 0 20px;
+            color: var(--primary);
+        }
+        
+        .feedback-form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        
+        .readonly {
+            background-color: #f5f5f5;
+            color: #777;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .submit-btn:active {
+            background-color: #e05555;
+        }
+        
+        @media (min-width: 768px) {
+            .buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .btn {
+                min-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Лего-2025</h1>
+        <p class="subtitle">Яркие моменты нашего лета</p>
+        
+        <div class="buttons">
+            <a href="#" class="btn">Наши видео</a>
+            <a href="#" class="btn">Наши фото</a>
+        </div>
+        
+        <h2>Оставь отзыв</h2>
+        
+        <div class="feedback-form">
+            <form>
+                <div class="form-group">
+                    <label>Ваше имя</label>
+                    <input type="text" class="form-control" placeholder="Введите ваше имя">
+                </div>
+                
+                <div class="form-group">
+                    <label>НЕ ИЗМЕНИТЬ НИ КАК ДОЛБАЕВ?</label>
+                    <input type="text" class="form-control readonly" value="ДОЛБАЕВ" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label>Ваш отзыв...</label>
+                    <textarea class="form-control" rows="4" placeholder="Напишите ваш отзыв"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">О ПРАВИТЬ</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Добавляем анимацию нажатия для всех кнопок
+        document.querySelectorAll('.btn, .submit-btn').forEach(btn => {
+            btn.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+                if(this.classList.contains('btn')) {
+                    this.style.backgroundColor = '#f0f0f0';
+                }
+            });
+            
+            btn.addEventListener('touchend', function() {
+                this.style.transform = '';
+                if(this.classList.contains('btn')) {
+                    this.style.backgroundColor = 'white';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
