@@ -50,8 +50,10 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
         
-        .video-item video {
+        .video-item iframe {
             width: 100%;
+            height: 200px;
+            border: none;
             display: block;
         }
         
@@ -70,8 +72,10 @@
             margin-top: 30px;
         }
         
-        .featured-video video {
+        .featured-video iframe {
             width: 100%;
+            height: 500px;
+            border: none;
         }
         
         .featured-caption {
@@ -98,11 +102,19 @@
             .video-gallery {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .featured-video iframe {
+                height: 400px;
+            }
         }
         
         @media (max-width: 480px) {
             .video-gallery {
                 grid-template-columns: 1fr;
+            }
+            
+            .featured-video iframe {
+                height: 250px;
             }
         }
     </style>
@@ -116,59 +128,59 @@
         <div class="video-gallery">
             <!-- Первый ряд -->
             <div class="video-item">
-                <video controls poster="thumbnails/video1.jpg">
-                    <source src="videos/summer1.mp4" type="video/mp4">
-                </video>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
                 <div class="video-caption">Видео 1</div>
             </div>
 
             <div class="video-item">
-                <video controls poster="thumbnails/video2.jpg">
-                    <source src="videos/summer2.mp4" type="video/mp4">
-                </video>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
                 <div class="video-caption">Видео 2</div>
             </div>
 
             <div class="video-item">
-                <video controls poster="thumbnails/video3.jpg">
-                    <source src="videos/summer3.mp4" type="video/mp4">
-                </video>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
                 <div class="video-caption">Видео 3</div>
             </div>
 
             <div class="video-item">
-                <video controls poster="thumbnails/video4.jpg">
-                    <source src="videos/video4.mp4" type="video/mp4">
-                </video>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
                 <div class="video-caption">Видео 4</div>
             </div>
 
             <!-- Второй ряд -->
             <div class="video-item">
-                <video controls poster="thumbnails/video5.jpg">
-                    <source src="videos/video5.mp4" type="video/mp4">
-                </video>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
                 <div class="video-caption">Видео 5</div>
             </div>
 
             <div class="video-item">
-                <video controls poster="thumbnails/video6.jpg">
-                    <source src="videos/video6.mp4" type="video/mp4">
-                </video>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
                 <div class="video-caption">Видео 6</div>
             </div>
 
             <div class="video-item">
-                <video controls poster="thumbnails/video7.jpg">
-                    <source src="videos/video7.mp4" type="video/mp4">
-                </video>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
                 <div class="video-caption">Видео 7</div>
             </div>
 
             <div class="video-item">
-                <video controls poster="thumbnails/video8.jpg">
-                    <source src="videos/video8.mp4" type="video/mp4">
-                </video>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
                 <div class="video-caption">Видео 8</div>
             </div>
         </div>
@@ -177,9 +189,9 @@
 
         <!-- Отдельное видео внизу -->
         <div class="featured-video">
-            <video controls poster="thumbnails/featured.jpg">
-                <source src="videos/featured.mp4" type="video/mp4">
-            </video>
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
             <div class="featured-caption">Специальное видео</div>
         </div>
     </div>
