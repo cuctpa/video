@@ -1,194 +1,180 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лето-2025</title>
+    <title>Лего-2025 | Яркие моменты лета</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-         :root {
-            --primary-color: #ff6b6b;
-            --secondary-color: #4e54c8;
-            --text-color: #333;
-            --light-bg: #f9f9f9;
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --dark: #292F36;
+            --light: #F7FFF7;
+            --accent: #FFE66D;
         }
         
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--light-bg);
-            color: var(--text-color);
+            background-color: var(--light);
+            color: var(--dark);
             line-height: 1.6;
         }
         
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 30px;
+            padding: 2rem;
         }
         
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 3rem;
+            padding: 3rem 0;
+            background: white;
+            color: var(--dark);
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
         }
         
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            font-size: 3rem;
+            margin: 0;
+            color: var(--primary);
         }
         
         .subtitle {
             font-size: 1.3rem;
-            color: #666;
-            margin-bottom: 40px;
+            opacity: 0.8;
+            margin-top: 1rem;
         }
         
-        .nav-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 60px;
+        /* Стили галереи из второй картинки */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
         }
         
-        .nav-button {
-            padding: 15px 35px;
-            border-radius: 30px;
-            text-decoration: none;
+        .photo-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .photo-item img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .photo-title {
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            font-size: 1.2rem;
+            color: var(--dark);
         }
         
-        .video-btn {
-            background: linear-gradient(135deg, var(--primary-color), #ff8e8e);
-            color: white;
-        }
-        
-        .photo-btn {
-            background: linear-gradient(135deg, var(--secondary-color), #8f94fb);
-            color: white;
-        }
-        
-        .nav-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        }
-        
+        /* Форма отзывов (как в первой картинке) */
         .feedback-section {
             background: white;
-            padding: 40px;
+            padding: 3rem;
             border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-            max-width: 600px;
-            margin: 0 auto;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            margin: 4rem auto;
+            max-width: 700px;
         }
         
         .feedback-section h2 {
             text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 30px;
-            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
         }
         
         .feedback-form {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 1.5rem;
         }
         
-        .feedback-input {
-            padding: 15px 20px;
-            border: 1px solid #ddd;
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .form-input {
+            padding: 1rem;
+            border: 2px solid #eee;
             border-radius: 8px;
+            flex: 1;
             font-family: inherit;
-            font-size: 1rem;
-            transition: border 0.3s;
-        }
-        
-        .feedback-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
         }
         
         .submit-btn {
-            background: var(--primary-color);
+            background: var(--primary);
             color: white;
             border: none;
-            padding: 15px;
+            padding: 1rem 2rem;
             border-radius: 8px;
-            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
+            margin-top: 1rem;
             transition: all 0.3s;
-            margin-top: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
         
         .submit-btn:hover {
             background: #ff5252;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
         }
         
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
+            .photo-gallery {
+                grid-template-columns: 1fr;
             }
-            .nav-buttons {
+            
+            .form-row {
                 flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-            .nav-button {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
             }
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <header>
-            <h1>Лето-2025</h1>
+            <h1>Лего-2025</h1>
             <p class="subtitle">Яркие моменты нашего лета</p>
-
-            <div class="nav-buttons">
-                <a href="video.html" class="nav-button video-btn">Наши видео</a>
-                <a href="gallery.html" class="nav-button photo-btn">Наши фото</a>
-            </div>
         </header>
-
+        
+        <!-- Галерея в стиле второй картинки -->
+        <div class="photo-gallery">
+            <div class="photo-item">
+                <img src="https://source.unsplash.com/random/600x400/?lego,summer,1" alt="Лето с Лего">
+                <div class="photo-title">Наши целые</div>
+            </div>
+            <div class="photo-item">
+                <img src="https://source.unsplash.com/random/600x400/?lego,fun,2" alt="Веселье">
+                <div class="photo-title">Наши фото</div>
+            </div>
+        </div>
+        
+        <!-- Форма отзывов из первой картинки -->
         <section class="feedback-section">
             <h2>Оставь отзыв</h2>
             <form class="feedback-form">
-                <input type="text" class="feedback-input" placeholder="Ваше имя">
-                <input type="text" class="feedback-input" placeholder="НЕ ИЗМЕНЯТЬ НИ КАК 'ДОЛБАЕБ'">
-                <textarea class="feedback-input" placeholder="Ваш отзыв..." rows="4"></textarea>
+                <div class="form-row">
+                    <input type="text" class="form-input" placeholder="Вице или" readonly>
+                    <input type="text" class="form-input" placeholder="ДОЛБАЕВ" readonly>
+                    <input type="text" class="form-input" placeholder="Не отзыв..." readonly>
+                </div>
                 <button type="submit" class="submit-btn">Отправить</button>
             </form>
         </section>
     </div>
 </body>
-
 </html>
