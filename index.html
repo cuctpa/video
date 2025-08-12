@@ -7,7 +7,7 @@
     <title>Лето-2025</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-         :root {
+        :root {
             --primary-color: #ff6b6b;
             --secondary-color: #4e54c8;
             --text-color: #333;
@@ -21,12 +21,20 @@
             background-color: var(--light-bg);
             color: var(--text-color);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Анимация загрузки страницы */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
+            animation: fadeIn 0.8s ease-out forwards;
         }
         
         header {
@@ -42,6 +50,18 @@
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
+            animation: slideDown 0.8s ease-out 0.2s both;
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
         
         h1::after {
@@ -53,12 +73,19 @@
             width: 80px;
             height: 3px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            animation: lineExpand 0.6s ease-out 0.6s both;
+        }
+        
+        @keyframes lineExpand {
+            from { width: 0; }
+            to { width: 80px; }
         }
         
         .subtitle {
             font-size: 1.1rem;
             color: #666;
             margin-bottom: 30px;
+            animation: fadeIn 0.8s ease-out 0.4s both;
         }
         
         .nav-buttons {
@@ -75,11 +102,28 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 1rem;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             flex: 1 1 200px;
             max-width: 250px;
+            transform: scale(0.95);
+            opacity: 0;
+            animation: buttonPop 0.6s ease-out 0.8s forwards;
+        }
+        
+        @keyframes buttonPop {
+            0% {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            70% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
         
         .video-btn {
@@ -93,7 +137,7 @@
         }
         
         .nav-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.03);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
         
@@ -103,6 +147,20 @@
             padding: 30px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             margin-bottom: 40px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 1s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
         
         .team-title {
@@ -123,11 +181,27 @@
             background: var(--light-bg);
             padding: 20px;
             border-radius: 10px;
-            transition: transform 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        
+        .team-member:nth-child(1) { animation: cardAppear 0.6s ease-out 1.2s forwards; }
+        .team-member:nth-child(2) { animation: cardAppear 0.6s ease-out 1.3s forwards; }
+        .team-member:nth-child(3) { animation: cardAppear 0.6s ease-out 1.4s forwards; }
+        .team-member:nth-child(4) { animation: cardAppear 0.6s ease-out 1.5s forwards; }
+        .team-member:nth-child(5) { animation: cardAppear 0.6s ease-out 1.6s forwards; }
+        
+        @keyframes cardAppear {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
         
         .team-member:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
         .member-name {
@@ -142,6 +216,11 @@
             color: var(--secondary-color);
             margin-bottom: 10px;
             font-size: 0.9rem;
+        }
+        
+        /* Плавный скролл для якорей */
+        html {
+            scroll-behavior: smooth;
         }
         
         @media (max-width: 480px) {
@@ -225,6 +304,27 @@
             </div>
         </section>
     </div>
+
+    <script>
+        // Анимация при скролле
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.team-member');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animated');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                elements.forEach(el => observer.observe(el));
+            };
+
+            animateOnScroll();
+        });
+    </script>
 </body>
 
 </html>
