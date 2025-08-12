@@ -18,10 +18,27 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--light-bg);
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
+            background-image: url('https://i.pinimg.com/originals/22/6b/0a/226b0a8c9a8e3e3e8e3e3e3e3e3e3e3.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.85);
+            z-index: -1;
         }
         
         /* Анимация загрузки страницы */
@@ -32,9 +49,14 @@
         
         .container {
             max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 30px auto;
+            padding: 30px;
             animation: fadeIn 0.8s ease-out forwards;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.92);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(2px);
         }
         
         header {
@@ -51,6 +73,7 @@
             position: relative;
             display: inline-block;
             animation: slideDown 0.8s ease-out 0.2s both;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
         
         @keyframes slideDown {
@@ -86,6 +109,7 @@
             color: #666;
             margin-bottom: 30px;
             animation: fadeIn 0.8s ease-out 0.4s both;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
         }
         
         .nav-buttons {
@@ -142,7 +166,7 @@
         }
         
         .team-section {
-            background: white;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
@@ -150,6 +174,7 @@
             transform: translateY(20px);
             opacity: 0;
             animation: fadeInUp 0.8s ease-out 1s forwards;
+            backdrop-filter: blur(2px);
         }
         
         @keyframes fadeInUp {
@@ -169,6 +194,7 @@
             text-align: center;
             margin-bottom: 30px;
             font-size: 1.8rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
         }
         
         .team-list {
@@ -178,12 +204,13 @@
         }
         
         .team-member {
-            background: var(--light-bg);
+            background: rgba(249, 249, 249, 0.9);
             padding: 20px;
             border-radius: 10px;
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             transform: translateY(20px);
             opacity: 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
         
         .team-member:nth-child(1) { animation: cardAppear 0.6s ease-out 1.2s forwards; }
@@ -202,6 +229,7 @@
         .team-member:hover {
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
         }
         
         .member-name {
@@ -252,11 +280,19 @@
             scroll-behavior: smooth;
         }
         
-        @media (max-width: 480px) {
-            .container {
-                padding: 15px;
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
             }
             
+            .container {
+                margin: 15px;
+                padding: 20px;
+                background-color: rgba(255, 255, 255, 0.95);
+            }
+        }
+        
+        @media (max-width: 480px) {
             h1 {
                 font-size: 2rem;
             }
