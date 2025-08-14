@@ -8,14 +8,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4e54c8;
+            --text-color: #fff;
+            --light-bg: #1a1a1a;
+        }
+        
         /* Базовые стили с анимациями */
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: linear-gradient(135deg, var(--primary-color), #ff8e8e);
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: var(--text-color);
+            line-height: 1.6;
             opacity: 0;
             animation: fadeIn 1s ease-out forwards;
+            min-height: 100vh;
         }
 
         @keyframes fadeIn {
@@ -24,8 +34,12 @@
 
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 20px auto;
+            background-color: rgba(0, 0, 0, 0.85);
+            border-radius: 15px;
             padding: 20px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Анимация шапки */
@@ -38,30 +52,31 @@
         .header h1 {
             font-family: 'Pacifico', cursive;
             font-size: 3rem;
-            color: #ff6b6b;
+            color: var(--primary-color);
             margin: 0 0 20px;
             opacity: 0;
             animation: fadeInDown 1s ease-out 0.3s forwards;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         .back-button {
             display: inline-block;
-            padding: 10px 25px;
-            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            padding: 12px 25px;
+            background: linear-gradient(135deg, var(--secondary-color), #8f94fb);
             color: white;
             text-decoration: none;
             border-radius: 30px;
             font-weight: 600;
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             opacity: 0;
             animation: fadeIn 0.8s ease-out 0.6s forwards;
         }
 
         .back-button:hover {
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            background: linear-gradient(135deg, #8f94fb, #4e54c8);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #8f94fb, var(--secondary-color));
         }
 
         /* Анимации для фотогалереи */
@@ -77,11 +92,13 @@
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
             transform: scale(0.95);
             opacity: 0;
             animation: photoAppear 0.8s ease-out forwards;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         @keyframes photoAppear {
@@ -107,8 +124,9 @@
 
         .photo-gallery img:hover {
             transform: scale(1.05) rotate(1deg);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
             z-index: 2;
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         /* Анимация заголовка */
@@ -131,7 +149,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             z-index: 100;
             align-items: center;
             justify-content: center;
@@ -151,6 +169,8 @@
             object-fit: contain;
             transform: scale(0.9);
             animation: zoomIn 0.3s ease-out 0.1s forwards;
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
         }
 
         @keyframes zoomIn {
@@ -165,10 +185,12 @@
             font-size: 30px;
             cursor: pointer;
             transition: transform 0.3s ease;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
         .close-btn:hover {
             transform: rotate(90deg);
+            color: var(--primary-color);
         }
 
         /* Адаптивность */
@@ -184,6 +206,11 @@
             .photo-gallery img {
                 height: 180px;
             }
+            
+            .container {
+                margin: 15px;
+                padding: 15px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -193,6 +220,15 @@
             
             .photo-gallery img {
                 height: 250px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .back-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -266,13 +302,6 @@
                 });
             }, 100);
         });
-
-        // Параллакс-эффект для фона
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.pageYOffset;
-            document.body.style.backgroundPosition = `center ${scrollPosition * 0.3}px`;
-        });
     </script>
 </body>
 </html>
-
