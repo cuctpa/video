@@ -10,8 +10,8 @@
         :root {
             --primary-color: #ff6b6b;
             --secondary-color: #4e54c8;
-            --text-color: #333;
-            --light-bg: #f9f9f9;
+            --text-color: #fff; /* Изменено на белый для лучшей читаемости на черном фоне */
+            --light-bg: #1a1a1a;
         }
         
         body {
@@ -21,11 +21,7 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
-            background-image: url('https://i.pinimg.com/originals/22/6b/0a/226b0a8c9a8e3e3e8e3e3e3e3e3e3e3.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             position: relative;
             min-height: 100vh;
         }
@@ -37,7 +33,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: linear-gradient(to right, red, yellow);
+            background: linear-gradient(to right, rgba(255,0,0,0.1), rgba(255,255,0,0.1));
             z-index: -1;
         }
         
@@ -53,10 +49,11 @@
             padding: 30px;
             animation: fadeIn 0.8s ease-out forwards;
             position: relative;
-            background-color: rgba(255, 255, 255, 0.92);
+            background-color: rgba(0, 0, 0, 0.85);
             border-radius: 15px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         header {
@@ -73,7 +70,7 @@
             position: relative;
             display: inline-block;
             animation: slideDown 0.8s ease-out 0.2s both;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
         
         @keyframes slideDown {
@@ -106,10 +103,10 @@
         
         .subtitle {
             font-size: 1.1rem;
-            color: #666;
+            color: #aaa;
             margin-bottom: 30px;
             animation: fadeIn 0.8s ease-out 0.4s both;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
         
         .nav-buttons {
@@ -127,7 +124,7 @@
             font-weight: 600;
             font-size: 1rem;
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
             flex: 1 1 200px;
             max-width: 250px;
@@ -162,19 +159,20 @@
         
         .nav-button:hover {
             transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
         }
         
         .team-section {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.4);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
             margin-bottom: 40px;
             transform: translateY(20px);
             opacity: 0;
             animation: fadeInUp 0.8s ease-out 1s forwards;
             backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         @keyframes fadeInUp {
@@ -194,7 +192,7 @@
             text-align: center;
             margin-bottom: 30px;
             font-size: 1.8rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
         
         .team-list {
@@ -209,7 +207,7 @@
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             transform: translateY(20px);
             opacity: 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             color: white;
             position: relative;
             overflow: hidden;
@@ -253,7 +251,7 @@
         
         .team-member:hover {
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
         
         .member-name {
@@ -261,7 +259,7 @@
             color: white;
             font-size: 1.4rem;
             margin-bottom: 5px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
         
         .member-role {
@@ -269,7 +267,7 @@
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 15px;
             font-size: 0.95rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
         
         .team-member p {
@@ -320,7 +318,7 @@
             .container {
                 margin: 15px;
                 padding: 20px;
-                background-color: rgba(255, 255, 255, 0.95);
+                background-color: rgba(0, 0, 0, 0.9);
             }
         }
         
