@@ -48,7 +48,7 @@
         }
 
         /* Стили для кнопки "Назад" с анимацией */
-        .back-button {
+        .back-link {
             display: inline-block;
             padding: 10px 25px;
             background: linear-gradient(135deg, #4e54c8, #8f94fb);
@@ -60,23 +60,11 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             opacity: 0;
             animation: fadeIn 0.8s ease-out 0.6s forwards;
-            margim-bottom: 30px;
+            margin-bottom: 30px;
         }
 
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .back-button:hover {
-            background-color: linear-gradient(135deg, #4e54c8, #8f94fb);
-            transform: translateY(-3px) scale(1.05);
+        .back-link:hover {
+            transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
@@ -93,7 +81,6 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             transform: translateY(20px);
             opacity: 0;
             animation: videoItemAppear 0.6s ease-out forwards;
@@ -121,27 +108,12 @@
             height: 200px;
             border: none;
             display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .video-item:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .video-item:hover iframe {
-            transform: scale(1.03);
         }
 
         .video-caption {
             padding: 12px;
             text-align: center;
             font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .video-item:hover .video-caption {
-            color: #ff6b6b;
         }
 
         /* Анимация для разделительной линии */
@@ -178,11 +150,6 @@
             width: 100%;
             height: 500px;
             border: none;
-            transition: transform 0.4s ease;
-        }
-
-        .featured-video:hover iframe {
-            transform: scale(1.01);
         }
 
         .featured-caption {
@@ -190,33 +157,9 @@
             text-align: center;
             font-size: 1.2rem;
             font-weight: bold;
-            transition: all 0.3s ease;
         }
 
-        .featured-video:hover .featured-caption {
-            color: #ff6b6b;
-            transform: scale(1.02);
-        }
-
-        /* Эффект пульсации при наведении на видео */
-        .video-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 10px;
-            background: rgba(255, 107, 107, 0.1);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .video-item:hover::after {
-            opacity: 1;
-        }
-
-        /* Адаптивность с анимациями */
+        /* Адаптивность */
         @media (max-width: 1024px) {
             .video-gallery {
                 grid-template-columns: repeat(3, 1fr);
@@ -258,28 +201,9 @@
             }
         }
 
-        /* Анимация для кнопки play при наведении */
-        .video-item {
-            position: relative;
-        }
-
-        .video-item::before {
-            content: '▶';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.8);
-            color: white;
-            font-size: 40px;
-            opacity: 0;
-            text-shadow: 0 0 10px rgba(0,0,0,0.5);
-            transition: all 0.3s ease;
-            z-index: 1;
-        }
-
-        .video-item:hover::before {
-            opacity: 0.8;
-            transform: translate(-50%, -50%) scale(1);
+        /* Фикс для YouTube ссылок */
+        .video-item iframe {
+            pointer-events: auto;
         }
     </style>
 </head>
@@ -292,14 +216,14 @@
         <div class="video-gallery">
             <!-- Первый ряд -->
             <div class="video-item">
-                <iframe src="https://youtu.be/gXcvAOvPAnU" 
+                <iframe src="https://www.youtube.com/embed/gXcvAOvPAnU" 
                         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen></iframe>
                 <div class="video-caption">Видео 1</div>
             </div>
 
             <div class="video-item">
-                <iframe src="https://youtu.be/gXcvAOvPAnU?feature=shared" 
+                <iframe src="https://www.youtube.com/embed/gXcvAOvPAnU" 
                         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen></iframe>
                 <div class="video-caption">Видео 2</div>
@@ -369,26 +293,7 @@
                     behavior: 'smooth'
                 });
             }, 100);
-
-            // Добавляем обработчик для видео
-            const videoItems = document.querySelectorAll('.video-item');
-            
-            videoItems.forEach(item => {
-                item.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px) scale(1.02)';
-                });
-                
-                item.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
         });
     </script>
 </body>
 </html>
-
-
-
-
-
-
