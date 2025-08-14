@@ -8,15 +8,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4e54c8;
+            --text-color: #fff;
+            --light-bg: #1a1a1a;
+        }
+        
         /* Базовые стили с анимацией загрузки */
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f5f5f5;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             line-height: 1.6;
             opacity: 0;
             animation: fadeIn 0.8s ease-out forwards;
+            color: var(--text-color);
         }
 
         @keyframes fadeIn {
@@ -25,19 +33,25 @@
 
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 20px auto;
             text-align: center;
+            background-color: rgba(0, 0, 0, 0.85);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Анимация заголовка */
         h1 {
             font-family: 'Pacifico', cursive;
-            color: #ff6b6b;
+            color: var(--primary-color);
             text-align: center;
             margin-bottom: 30px;
             opacity: 0;
             transform: translateY(-20px);
             animation: fadeInDown 0.8s ease-out 0.3s forwards;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         @keyframes fadeInDown {
@@ -50,14 +64,14 @@
         /* Стили для кнопки "Назад" с анимацией */
         .back-link {
             display: inline-block;
-            padding: 10px 25px;
-            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            padding: 12px 25px;
+            background: linear-gradient(135deg, var(--secondary-color), #8f94fb);
             color: white;
             text-decoration: none;
             border-radius: 30px;
             font-weight: 600;
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             opacity: 0;
             animation: fadeIn 0.8s ease-out 0.6s forwards;
             margin-bottom: 30px;
@@ -65,7 +79,7 @@
 
         .back-link:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         /* Анимации для видео-галереи */
@@ -77,13 +91,15 @@
         }
 
         .video-item {
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
             transform: translateY(20px);
             opacity: 0;
             animation: videoItemAppear 0.6s ease-out forwards;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Последовательное появление видео */
@@ -114,13 +130,14 @@
             padding: 12px;
             text-align: center;
             font-weight: bold;
+            color: white;
         }
 
         /* Анимация для разделительной линии */
         hr {
             border: 0;
             height: 1px;
-            background: #ddd;
+            background: rgba(255, 255, 255, 0.2);
             margin: 30px 0;
             opacity: 0;
             animation: fadeIn 0.6s ease-out 1.4s forwards;
@@ -129,14 +146,16 @@
         /* Анимация для специального видео */
         .featured-video {
             grid-column: 1 / -1;
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             margin-top: 30px;
             transform: scale(0.95);
             opacity: 0;
             animation: featuredVideoAppear 0.8s ease-out 1.5s forwards;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         @keyframes featuredVideoAppear {
@@ -157,6 +176,7 @@
             text-align: center;
             font-size: 1.2rem;
             font-weight: bold;
+            color: white;
         }
 
         /* Адаптивность */
@@ -189,6 +209,11 @@
             .featured-video iframe {
                 height: 400px;
             }
+            
+            .container {
+                padding: 20px;
+                margin: 15px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -198,6 +223,10 @@
             
             .featured-video iframe {
                 height: 250px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
             }
         }
 
@@ -223,21 +252,21 @@
             </div>
 
             <div class="video-item">
-                <iframe src="https://youtu.be/iFoc92jEe0w" 
+                <iframe src="https://www.youtube.com/embed/iFoc92jEe0w" 
                         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen></iframe>
                 <div class="video-caption">Видео 2</div>
             </div>
 
             <div class="video-item">
-                <iframe src="https://youtu.be/-jZqG7QpVUQ" 
+                <iframe src="https://www.youtube.com/embed/-jZqG7QpVUQ" 
                         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen></iframe>
                 <div class="video-caption">Видео 3</div>
             </div>
 
             <div class="video-item">
-                <iframe src="https://youtu.be/MMwjsAFWOYM" 
+                <iframe src="https://www.youtube.com/embed/MMwjsAFWOYM" 
                         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen></iframe>
                 <div class="video-caption">Видео 4</div>
@@ -297,4 +326,3 @@
     </script>
 </body>
 </html>
-
