@@ -21,7 +21,7 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
-            background: linear-gradient(135deg, #ff0000, #ffff00);
+            background-image: url('https://i.pinimg.com/originals/22/6b/0a/226b0a8c9a8e3e3e8e3e3e3e3e3e3e3.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -37,7 +37,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 0, 0, 0.7), rgba(255, 255, 0, 0.7));
+            background-color: linear-gradient(to right, red, yellow);
             z-index: -1;
         }
         
@@ -240,6 +240,9 @@
         .team-member:nth-child(4) { 
             animation: cardAppear 0.6s ease-out 1.5s forwards; 
         }
+        .team-member:nth-child(5) { 
+            animation: cardAppear 0.6s ease-out 1.6s forwards; 
+        }
         
         @keyframes cardAppear {
             to {
@@ -390,16 +393,21 @@
                 <div class="team-member">
                     <div class="member-name">Олеся</div>
                     <div class="member-role">Креативный директор впечатлений</div>
-                    <p>Её девиз — «двигайся вперёд, даже медленно». Сомнения не останавливают, а усталость лишь повод снизить.</p>
+                    <p>Её девиз — «двигайся вперёд, даже медленно». Сомнения не останавливают, а усталость — лишь повод снизить темп, но не сдаваться.</p>
+                    <div class="member-quote">
+                        "Если сомневаешься - иди! Если устал - иди медленнее, но не останавливайся!"
+                    </div>
                 </div>
                 
-                <!-- Илья -->
+                <!-- Илья (монтажер) -->
                 <div class="team-member">
                     <div class="member-name">Илья</div>
                     <div class="member-role">Волшебник монтажа</div>
-                    <p>Для него идеальный кадр — не самый чёткий, а самый живой. Он оставляет в монтаже только то, что цепляет сердце, а не пожелать выглядеть красивым.</p>
+                    <p>Для него идеальный кадр — не самый чёткий, а самый живой. Он оставляет в монтаже только то, что цепляет сердце, а не просто выглядит красиво.</p>
+                    <div class="member-quote">
+                        "Идеальный кадр - это не тот, который ты снял, а тот, который ты не смог вырезать при монтаже!"
+                    </div>
                 </div>
-
                 
                 <!-- Ярик (оператор) -->
                 <div class="team-member">
@@ -437,5 +445,3 @@
 </body>
 
 </html>
-
-
